@@ -1,3 +1,14 @@
+##Safety warning
+
+The modification circuit is not isolated from the espresso machine electronics.
+
+Because of this, the Arduino must never be connected to a computer through USB while the espresso machine is powered from AC mains.
+
+Before connecting the Arduino USB cable for uploading firmware, debugging, or making any changes, the espresso machine must be completely unplugged from the AC mains outlet.
+
+Failing to do this may damage the Arduino, the computer, the espresso machine electronics, and may create a serious electrical safety hazard.
+
+
 # Firmware
 
 This folder contains the working Arduino Nano firmware for the HiBREW H10A Plus pressure-control mod.
