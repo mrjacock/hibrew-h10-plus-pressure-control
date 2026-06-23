@@ -1,4 +1,4 @@
-##Safety warning
+#Safety warning
 
 The modification circuit is not isolated from the espresso machine electronics.
 
