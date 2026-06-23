@@ -2,7 +2,7 @@
 
 The modification circuit is not isolated from the espresso machine electronics.
 
-Because of this, the Arduino must never be connected to a computer through USB while the espresso machine is powered from AC mains.
+Because of this, the Arduino must never be connected to a computer through USB while the espresso machine is powered from (even if it's connected but not turned ON) AC mains.
 
 Before connecting the Arduino USB cable for uploading firmware, debugging, or making any changes, the espresso machine must be completely unplugged from the AC mains outlet.
 
