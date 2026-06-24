@@ -124,16 +124,7 @@ Core parts:
 
 See [Bill of materials](docs/bill-of-materials.md).
 
-## Documentation
 
-- [Safety](docs/safety.md)
-- [How it works](docs/how-it-works.md)
-- [Wiring](docs/wiring.md)
-- [Hydraulic layout](docs/hydraulic-layout.md)
-- [Software](docs/software.md)
-- [Calibration](docs/calibration.md)
-- [Testing checklist](docs/testing-checklist.md)
-- [Troubleshooting](docs/troubleshooting.md)
 
 ## Project status
 
