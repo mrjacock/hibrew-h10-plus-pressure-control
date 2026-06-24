@@ -23,7 +23,6 @@ This also makes live debugging difficult: the firmware is not designed around no
 
 Read the full [Safety](docs/safety.md) page before touching the machine.
 
-![Pressure control overview](images/pressure-control-overview.png)
 
 An experimental Arduino Nano modification that adds real pressure-feedback control to the HiBREW H10A Plus espresso machine.
 
@@ -100,7 +99,6 @@ It uses direct AVR register access instead of relying on functions such as `digi
 
 This code was AI-assisted / vibe-coded, but not blindly accepted. The final logic was reviewed line by line, timing-critical sections were kept deliberately small, and AI-generated suggestions were treated as suggestions, not authority. The goal was to give the AI as little freedom as possible around safety-critical and mains-adjacent behavior.
 
-See [Software](docs/software.md).
 
 ## Current behavior
 
@@ -126,16 +124,7 @@ Core parts:
 
 See [Bill of materials](docs/bill-of-materials.md).
 
-## Documentation
 
-- [Safety](docs/safety.md)
-- [How it works](docs/how-it-works.md)
-- [Wiring](docs/wiring.md)
-- [Hydraulic layout](docs/hydraulic-layout.md)
-- [Software](docs/software.md)
-- [Calibration](docs/calibration.md)
-- [Testing checklist](docs/testing-checklist.md)
-- [Troubleshooting](docs/troubleshooting.md)
 
 ## Project status
 
