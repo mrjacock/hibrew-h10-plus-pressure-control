@@ -99,7 +99,6 @@ It uses direct AVR register access instead of relying on functions such as `digi
 
 This code was AI-assisted / vibe-coded, but not blindly accepted. The final logic was reviewed line by line, timing-critical sections were kept deliberately small, and AI-generated suggestions were treated as suggestions, not authority. The goal was to give the AI as little freedom as possible around safety-critical and mains-adjacent behavior.
 
-See [Software](docs/software.md).
 
 ## Current behavior
 
