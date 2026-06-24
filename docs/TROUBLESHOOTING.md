@@ -1,79 +1,38 @@
 # Troubleshooting
 
-## The pump does not run
+## Pump does not run
 
-Possible causes:
-
-- `MOTO_IN` and `MOTO_OUT` are swapped;
-- `D2` or `D5` is wired incorrectly;
-- Arduino is not powered;
-- machine 5 V and Arduino GND are not common;
-- firmware was not uploaded correctly;
-- the original `MOTO` path was interrupted but not routed through Arduino;
-- `D5` connection to the power board is open.
-
-## The machine reports an error
-
-Possible causes:
-
-- too many pump pulses are being skipped;
-- `MAX_BLOCKED_PULSES` is too high;
-- `MIN_BURST_PULSES` is too low;
-- pressure reading is wrong;
-- control response is too aggressive;
-- the original controller detects unexpected pump behavior.
-
-## Pressure overshoots too much
-
-Try:
-
-- lowering `FULL_COPY_UNTIL_CBAR` slightly;
-- lowering `HOLD_DUTY_PERMILLE`;
-- increasing `KP_PER_CBAR` carefully;
-- checking for sensor delay caused by trapped air;
-- checking that the pressure tap point is not too damped or isolated.
-
-## Pressure is unstable
-
-Vibration pumps create real pressure pulsation. Some movement is expected.
-
-Try:
-
-- increasing `EMA_SHIFT` from `4` to `5`;
-- removing trapped air from the sensor branch;
-- checking for leaks;
-- checking that the fitting does not create a blocked dead-end;
-- using a less aggressive `KP_PER_CBAR`.
-
-## Pressure never reaches the target
-
-Possible causes:
-
-- grind is too coarse;
-- basket/puck offers too little resistance;
-- hydraulic leak;
-- pump not receiving enough pulses;
-- `HOLD_DUTY_PERMILLE` too low;
-- `FULL_COPY_UNTIL_CBAR` too low;
-- sensor reading too high due to wrong calibration.
-
-## Arduino upload fails
-
-Try:
-
-- select `Arduino Nano`;
-- try `ATmega328P` and then `ATmega328P (Old Bootloader)`;
-- select the correct serial port;
-- use a data-capable USB cable;
-- upload the Blink example first;
-- unplug the espresso machine from mains before connecting USB.
-
-## Arduino or PC gets damaged
-
-The known dangerous condition is:
+Check the `MOTO` signal path:
 
 ```text
-Espresso machine powered from mains + Arduino connected by USB to a PC
+Original MCU board -> Arduino D2 -> Arduino D5 -> original TRIAC pump power board -> pump
 ```
 
-Avoid this condition completely.
+The TRIAC board drives the pump. If the Arduino blocks or fails to reproduce the `MOTO` command, the pump will not receive a valid command.
+
+## Pressure does not rise
+
+Possible causes:
+
+- grinder too coarse or no hydraulic restriction;
+- pressure sensor branch leaking;
+- pump command being blocked too much;
+- wrong target or pressure calibration;
+- MOTO input/output wiring swapped;
+- machine not actually requesting pump operation.
+
+## Pressure overshoots
+
+Possible causes:
+
+- target window too narrow;
+- smoothing too slow;
+- minimum burst too aggressive;
+- pressure sensor reading delayed or noisy;
+- pump command not being blocked when target pressure is reached.
+
+## Serial output is missing
+
+That is expected. The firmware should not rely on live `Serial` debugging while the machine is powered, because connecting USB to a PC in that state is unsafe.
+
+Unplug the machine before reconnecting USB.

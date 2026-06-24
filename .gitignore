@@ -1,18 +1,15 @@
+# Arduino build artifacts
+*.hex
+*.elf
+*.eep
+*.map
+*.lst
+
 # OS files
 .DS_Store
 Thumbs.db
 
-# Arduino build files
-*.hex
-*.elf
-*.bin
-*.eep
-build/
-
-# Editors
+# Editor files
 .vscode/
 .idea/
-
-# Local notes
-_private/
-*.bak
+*.swp

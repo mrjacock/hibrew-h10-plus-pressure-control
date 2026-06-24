@@ -1,73 +1,43 @@
 # Software
 
-Firmware path:
+## Firmware style
+
+The firmware targets an Arduino Nano with an ATmega328P.
+
+It is still Arduino/AVR C++, but it is not written in the usual beginner Arduino style. The timing-sensitive part avoids slow convenience calls such as `digitalRead()` and `digitalWrite()` and instead uses direct AVR port access.
+
+The running control loop also avoids `delay()`, `millis()`, and `Serial` because predictable timing matters and because live USB serial debugging is unsafe while the machine is powered from mains.
+
+## AI-assisted / vibe-coded note
+
+The firmware was AI-assisted / vibe-coded during development.
+
+That does not mean the code was accepted blindly. The final logic was reviewed line by line, timing-critical behavior was kept deliberately small, and AI-generated changes were treated as suggestions rather than authority. The AI was intentionally given as little freedom as possible around safety-critical and mains-adjacent behavior.
+
+## Main control idea
+
+The original machine controller still decides when pump activity is requested. The Arduino reads that original `MOTO` signal and then decides whether to pass or block it depending on pressure.
+
+```text
+Pressure below target window  -> pass pump pulses
+Pressure above target window  -> block pump pulses
+Pressure falls again          -> resume pump pulses
+```
+
+The result is burst / half-cycle skipping control, not a full phase-angle dimmer.
+
+## Why not normal Serial debugging?
+
+Because the Arduino USB port must not be connected to a computer while the espresso machine is powered from mains.
+
+That restriction changes the entire debug workflow. Runtime behavior should be tested with planned, short test runs and then inspected offline after the machine has been unplugged and the Arduino is safe to reconnect by USB.
+
+## Firmware location
+
+Place the working sketch here:
 
 ```text
 firmware/hibrew_h10_pressure_control/hibrew_h10_pressure_control.ino
 ```
 
-## Arduino IDE settings
-
-Use:
-
-| Setting | Value |
-|---|---|
-| Board | Arduino Nano |
-| Processor | ATmega328P |
-| Logic level | 5 V |
-| Bootloader | Try `ATmega328P (Old Bootloader)` if upload fails on a clone |
-
-## Upload safety
-
-Upload only when the espresso machine is unplugged from mains.
-
-Do not connect USB to the Arduino while the machine is powered from mains.
-
-## Main firmware behavior
-
-The firmware uses:
-
-- `INT0` on `D2` to react to the original `MOTO` signal;
-- direct AVR port access for fast `D5` updates;
-- `Timer1` as an idle timeout to release `D5` if original pump pulses stop;
-- `analogRead(A4)` for pressure sensor input;
-- an exponential moving average filter for pressure smoothing;
-- pulse-density modulation to pass or skip pump trigger pulses.
-
-## Parameters
-
-| Parameter | Default | Meaning |
-|---|---:|---|
-| `ENABLE_PRESSURE_CONTROL` | `true` | Set to `false` for pure D2 -> D5 pass-through |
-| `ADC_0_BAR` | `102` | Expected ADC value at 0 bar |
-| `ADC_12_BAR` | `921` | Expected ADC value at 12 bar |
-| `TARGET_CBAR` | `900` | Target pressure: 9.00 bar |
-| `FULL_COPY_UNTIL_CBAR` | `850` | Full pass-through below 8.50 bar |
-| `HARD_CUT_CBAR` | `1050` | Aggressive cut above 10.50 bar |
-| `HOLD_DUTY_PERMILLE` | `720` | Approximate duty near target |
-| `KP_PER_CBAR` | `4` | Simplified proportional response |
-| `EMA_SHIFT` | `4` | Pressure filter strength |
-| `MIN_BURST_PULSES` | `2` | Minimum consecutive passed pulses |
-| `MAX_BLOCKED_PULSES` | `150` | Maximum blocked pulse streak before a safety burst |
-| `SAFETY_BURST_PULSES` | `2` | Pulses passed during safety burst |
-| `SAFETY_BURST_MAX_CBAR` | `1000` | Safety burst only below this pressure |
-
-## Pressure units
-
-The firmware uses centibar:
-
-```text
-900 cbar = 9.00 bar
-1050 cbar = 10.50 bar
-1200 cbar = 12.00 bar
-```
-
-## Fail-open behavior
-
-If the sensor reading is outside the expected range, the firmware sets duty to full pass-through. This is intentional: a broken or disconnected pressure signal should not cause the firmware to silently block the pump command.
-
-## Why Serial is not used
-
-The working firmware is designed for timing stability and does not use Serial debugging. It also disables Timer0, which means normal Arduino timing helpers such as `millis()` and `delay()` are not available.
-
-For live debugging, use isolated equipment and do not connect the USB port while the machine is powered from mains.
+Arduino IDE expects the `.ino` file to be inside a folder with the same name.
