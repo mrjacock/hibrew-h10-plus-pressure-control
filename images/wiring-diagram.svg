@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="720" viewBox="0 0 1180 720" role="img" aria-labelledby="title desc">
+  <title id="title">Wiring diagram</title>
+  <desc id="desc">Conceptual wiring diagram for Arduino Nano, pressure sensor, and original machine connector.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+      <path d="M2,2 L10,6 L2,10 z" fill="#111827"/>
+    </marker>
+  </defs>
+  <rect width="1180" height="720" rx="22" fill="#f9fafb"/>
+  <text x="50" y="62" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="32" font-weight="700" fill="#111827">Conceptual wiring diagram</text>
+  <text x="50" y="96" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="18" fill="#4b5563">Keep the original connector reversible by building an intermediate harness.</text>
+
+  <rect x="55" y="160" width="380" height="260" rx="18" fill="#ffffff" stroke="#9ca3af" stroke-width="2"/>
+  <text x="85" y="205" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="24" font-weight="700" fill="#111827">Machine logic connector</text>
+  <text x="85" y="238" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="16" fill="#4b5563">Observed connector labels</text>
+  <g font-family="Consolas,Menlo,monospace" font-size="18" fill="#111827">
+    <text x="88" y="285">GND | VCC 5V | KG | ZERO | WTEST</text>
+    <text x="88" y="318">MOTO | RT | HEAT | DCF</text>
+  </g>
+  <rect x="80" y="350" width="320" height="38" rx="8" fill="#fef3c7" stroke="#f59e0b"/>
+  <text x="96" y="375" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="16" font-weight="700" fill="#92400e">Cut/intercept only the MOTO path</text>
+
+  <rect x="520" y="145" width="300" height="320" rx="20" fill="#eff6ff" stroke="#2563eb" stroke-width="3"/>
+  <text x="573" y="195" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="27" font-weight="700" fill="#111827">Arduino Nano</text>
+  <g font-family="Inter,Segoe UI,Arial,sans-serif" font-size="18" fill="#111827">
+    <text x="565" y="248">D2  ← MOTO from controller</text>
+    <text x="565" y="286">D5  → MOTO to power board</text>
+    <text x="565" y="324">A4  ← pressure sensor signal</text>
+    <text x="565" y="362">5V  ← machine 5 V rail</text>
+    <text x="565" y="400">GND ↔ common ground</text>
+  </g>
+
+  <rect x="900" y="160" width="230" height="145" rx="18" fill="#ffffff" stroke="#9ca3af" stroke-width="2"/>
+  <text x="942" y="208" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="24" font-weight="700" fill="#111827">Power board</text>
+  <text x="940" y="242" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="17" fill="#4b5563">Pump TRIAC input</text>
+  <text x="970" y="272" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="17" fill="#4b5563">receives D5</text>
+
+  <rect x="120" y="535" width="290" height="105" rx="18" fill="#ffffff" stroke="#9ca3af" stroke-width="2"/>
+  <text x="160" y="578" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="24" font-weight="700" fill="#111827">Pressure sensor</text>
+  <text x="158" y="610" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="17" fill="#4b5563">5 V · GND · analog output</text>
+
+  <path d="M435 270 H510" stroke="#111827" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+  <text x="447" y="252" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="16" fill="#111827">MOTO in</text>
+  <path d="M820 285 H890" stroke="#111827" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+  <text x="831" y="267" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="16" fill="#111827">MOTO out</text>
+  <path d="M410 588 C500 588, 505 330, 520 324" stroke="#111827" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+  <text x="455" y="545" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="16" fill="#111827">A4</text>
+  <path d="M410 612 C475 642, 555 430, 565 400" stroke="#6b7280" stroke-width="3" fill="none" stroke-dasharray="8 8"/>
+  <text x="462" y="632" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="16" fill="#4b5563">5 V and GND shared</text>
+
+  <rect x="55" y="455" width="1068" height="44" rx="10" fill="#fee2e2" stroke="#dc2626"/>
+  <text x="77" y="483" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="17" font-weight="700" fill="#991b1b">Never connect the Arduino USB cable while the espresso machine is powered from mains.</text>
+</svg>

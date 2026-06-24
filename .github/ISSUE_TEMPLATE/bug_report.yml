@@ -1,0 +1,43 @@
+name: Bug report
+description: Report a firmware, wiring, or documentation problem
+title: "[Bug]: "
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting a problem. Do not perform unsafe live tests to collect data.
+  - type: input
+    id: machine
+    attributes:
+      label: Machine model and revision
+      description: Include production date or visible board revision if known.
+      placeholder: HiBREW H10A Plus, production date unknown
+  - type: input
+    id: arduino
+    attributes:
+      label: Arduino board
+      placeholder: Arduino Nano clone, ATmega328P old bootloader
+  - type: input
+    id: sensor
+    attributes:
+      label: Pressure sensor
+      placeholder: 0-12 bar, 0.5-4.5 V, 5 V supply
+  - type: textarea
+    id: problem
+    attributes:
+      label: What happened?
+      description: Describe the observed behavior and what you expected.
+    validations:
+      required: true
+  - type: textarea
+    id: parameters
+    attributes:
+      label: Firmware parameters changed
+      description: Paste only the constants you changed from default.
+      render: cpp
+  - type: textarea
+    id: photos
+    attributes:
+      label: Photos or diagrams
+      description: Add wiring photos if safe and possible.

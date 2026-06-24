@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="360" viewBox="0 0 1280 360" role="img" aria-labelledby="title desc">
+  <title id="title">HiBREW H10A Plus pressure control mod</title>
+  <desc id="desc">Project banner showing an espresso machine, Arduino Nano, pressure sensor, and pump control signal.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#111827"/>
+      <stop offset="1" stop-color="#374151"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#000" flood-opacity="0.28"/>
+    </filter>
+  </defs>
+  <rect width="1280" height="360" rx="24" fill="url(#bg)"/>
+  <text x="70" y="95" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="46" font-weight="700" fill="#f9fafb">HiBREW H10A Plus Pressure Control</text>
+  <text x="72" y="142" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="24" fill="#d1d5db">Arduino Nano + real pressure feedback + MOTO pulse modulation</text>
+  <g filter="url(#shadow)">
+    <rect x="80" y="210" width="210" height="90" rx="16" fill="#f9fafb"/>
+    <text x="105" y="248" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="21" font-weight="700" fill="#111827">Pressure sensor</text>
+    <text x="105" y="278" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="18" fill="#374151">0.5-4.5 V / 0-12 bar</text>
+    <rect x="395" y="195" width="250" height="120" rx="18" fill="#e5e7eb"/>
+    <text x="450" y="238" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="24" font-weight="700" fill="#111827">Arduino Nano</text>
+    <text x="427" y="273" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="18" fill="#374151">D2 input · D5 output · A4 pressure</text>
+    <rect x="780" y="205" width="180" height="100" rx="50" fill="#f3f4f6"/>
+    <circle cx="825" cy="255" r="30" fill="#d1d5db"/>
+    <circle cx="915" cy="255" r="30" fill="#d1d5db"/>
+    <text x="812" y="328" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="19" fill="#f9fafb">ULKA pump</text>
+    <rect x="1060" y="205" width="140" height="100" rx="14" fill="#f9fafb"/>
+    <text x="1090" y="250" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="22" font-weight="700" fill="#111827">TRIAC</text>
+    <text x="1086" y="278" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="16" fill="#374151">power board</text>
+  </g>
+  <g fill="none" stroke="#60a5fa" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M300 255 H385"/>
+    <path d="M650 255 H770"/>
+    <path d="M970 255 H1050"/>
+  </g>
+  <g fill="#60a5fa">
+    <polygon points="383,255 365,244 365,266"/>
+    <polygon points="768,255 750,244 750,266"/>
+    <polygon points="1048,255 1030,244 1030,266"/>
+  </g>
+</svg>

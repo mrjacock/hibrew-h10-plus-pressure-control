@@ -1,0 +1,21 @@
+name: Question
+description: Ask a question about the mod, documentation, or firmware
+title: "[Question]: "
+labels: [question]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Ask clearly and include your machine revision if relevant. Do not attach unsafe live-test procedures.
+  - type: textarea
+    id: question
+    attributes:
+      label: Question
+      description: What are you trying to understand or solve?
+    validations:
+      required: true
+  - type: input
+    id: context
+    attributes:
+      label: Machine / firmware context
+      placeholder: HiBREW H10A Plus, v0.2 firmware, Arduino Nano
